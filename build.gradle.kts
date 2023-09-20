@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotest.multiplatform) apply false
 }
 
-allprojects {
+subprojects {
 
     group = "ch.rrte"
     version = "0.1.0"
