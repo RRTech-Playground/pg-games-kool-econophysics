@@ -4,9 +4,18 @@ plugins {
     alias(libs.plugins.kotest.multiplatform) apply false
 }
 
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.jetbrains.kotlinx:atomicfu-gradle-plugin:0.21.0")
+    }
+}
+
 subprojects {
 
-    group = "ch.rrte"
+    group = "ch.rrte.kool.playground"
     version = "0.1.0"
 
     repositories {

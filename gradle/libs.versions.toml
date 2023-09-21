@@ -1,4 +1,5 @@
 [versions]
+gdxLwjgl3GlfwQwtMacos = "1.12.0"
 jbCompose = "1.5.1"
 koin = "3.5.0"
 kool = "0.11.0"     # "0.12.1-SNAPSHOT" - newer but minor breaking changes might occur from time to time
@@ -8,9 +9,16 @@ kotlinxCoroutines = "1.7.3"   # kool has 1.7.1 - we'll see
 kotlinxDatetime = "0.4.1"
 kotlinxSerialization = "1.6.0"
 ktor = "2.3.4"
+lwjgl = "3.3.2"
+#lwjgl = "3.3.2:natives-macos"
+physicsJni = "2.0.5"   # 2.2.1 > Kool 0.11.0
+physicsJniCuda = "2.2.1"
 
 
 [libraries]
+
+#
+gdx-lwjgl3-glfw-awt-macos = { module = "com.badlogicgames.gdx:gdx-lwjgl3-glfw-awt-macos", version.ref = "gdxLwjgl3GlfwQwtMacos"}
 
 # Koin
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin"}
@@ -42,6 +50,20 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+
+# LWJGL
+lwjgl = { module = "org.lwjgl:lwjgl", version.ref = "lwjgl"}
+lwjgl-glfw = { module = "org.lwjgl:lwjgl-glfw", version.ref = "lwjgl"}
+lwjgl-jemalloc = { module = "org.lwjgl:lwjgl-jemalloc", version.ref = "lwjgl"}
+lwjgl-opengl = { module = "org.lwjgl:lwjgl-opengl", version.ref = "lwjgl"}
+lwjgl-vma = { module = "org.lwjgl:lwjgl-vma", version.ref = "lwjgl"}
+lwjgl-shaderc = { module = "org.lwjgl:lwjgl-shaderc", version.ref = "lwjgl"}
+lwjgl-nfd = { module = "org.lwjgl:lwjgl-nfd", version.ref = "lwjgl"}
+lwjgl-stb = { module = "org.lwjgl:lwjgl-stb", version.ref = "lwjgl"}
+
+# PhysicsJni
+physixjni = { module = "de.fabmax:physx-jni", version.ref = "physicsJni"}
+physixjni-cuda = { module = "de.fabmax:physx-jni-cuda", version.ref = "physicsJniCuda"}
 
 
 [plugins]

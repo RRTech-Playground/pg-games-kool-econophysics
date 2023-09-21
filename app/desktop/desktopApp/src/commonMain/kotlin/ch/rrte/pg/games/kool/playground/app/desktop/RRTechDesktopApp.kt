@@ -1,4 +1,4 @@
-package ch.rrte.pg.games.kool.playground.compose.desktop.app
+package ch.rrte.pg.games.kool.playground.app.desktop
 
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp

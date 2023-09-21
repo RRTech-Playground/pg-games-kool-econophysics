@@ -1,6 +1,5 @@
 package ch.rrte.pg.games.kool.playground.app.desktop
 
-import ch.rrte.pg.games.kool.playground.compose.desktop.app.RRTechDesktopApp
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 
