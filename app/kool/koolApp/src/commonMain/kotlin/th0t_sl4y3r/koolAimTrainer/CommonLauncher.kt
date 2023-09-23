@@ -38,8 +38,13 @@ fun launchApp(ctx: KoolContext) {
             clipFar = 500f
             lookAt.set(Vec3f(0f, 0f, 0f))
         }
-        lighting.singleLight {
-            setDirectional(Vec3f(-1f, -1f, -1f))
+        //lighting.singleLight {
+        //    setDirectional(Vec3f(-1f, -1f, -1f))
+        //    setColor(Color.WHITE, 5f)
+        //}
+        // Kool version 0.12.1-SNAPSHOT
+        lighting.singleDirectionalLight {
+            setup(Vec3f(-1f, -1f, -1f))
             setColor(Color.WHITE, 5f)
         }
         //this should work for mouse input

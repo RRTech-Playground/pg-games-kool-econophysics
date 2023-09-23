@@ -22,6 +22,7 @@ subprojects {
         mavenLocal()
         google()
         mavenCentral()
+        maven("https://oss.sonatype.org/content/repositories/snapshots") // for Kool SNAPSHOTS
         maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
     }
 

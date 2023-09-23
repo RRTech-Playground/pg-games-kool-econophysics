@@ -41,8 +41,8 @@ kotlin {
 
     sourceSets {
         // Choose your kool version:
-        val koolVersion = "0.11.0"              // latest stable version
-        //val koolVersion = "0.12.1-SNAPSHOT"   // newer but minor breaking changes might occur from time to time
+        //val koolVersion = "0.11.0"              // latest stable version
+        val koolVersion = "0.12.1-SNAPSHOT"   // newer but minor breaking changes might occur from time to time
 
         val commonMain by getting {
             dependencies {

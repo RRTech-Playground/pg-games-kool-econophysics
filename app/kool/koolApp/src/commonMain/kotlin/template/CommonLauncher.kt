@@ -3,7 +3,7 @@ package template
 import de.fabmax.kool.KoolContext
 import de.fabmax.kool.math.Vec3f
 import de.fabmax.kool.modules.ksl.KslPbrShader
-import de.fabmax.kool.scene.colorMesh
+import de.fabmax.kool.scene.addColorMesh
 import de.fabmax.kool.scene.defaultOrbitCamera
 import de.fabmax.kool.scene.scene
 import de.fabmax.kool.util.Color
@@ -21,7 +21,7 @@ fun launchApp(ctx: KoolContext) {
         defaultOrbitCamera()
 
         // add a spinning color cube to the scene
-        colorMesh {
+        addColorMesh {
             generate {
                 // called once on init: generates a cube with different (vertex-)colors assigned to each side
                 cube(centered = true) {
@@ -40,9 +40,18 @@ fun launchApp(ctx: KoolContext) {
             }
         }
 
-        // set up a single light source
+        // set up a single light source - Kool version 0.11.0
+        /*
         lighting.singleLight {
             setDirectional(Vec3f(-1f, -1f, -1f))
+            setColor(Color.WHITE, 5f)
+        }
+
+         */
+
+        // Kool version 0.12.1-SNAPSHOT
+        lighting.singleDirectionalLight {
+            setup(Vec3f(-1f, -1f, -1f))
             setColor(Color.WHITE, 5f)
         }
     }
