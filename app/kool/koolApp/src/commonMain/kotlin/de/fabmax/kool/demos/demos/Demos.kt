@@ -6,6 +6,7 @@ import de.fabmax.kool.demos.demos.hello.HelloRenderToTextureDemo
 import de.fabmax.kool.demos.demos.hello.HelloUiDemo
 import de.fabmax.kool.demos.demos.hello.HelloWorldDemo
 import de.fabmax.kool.demos.demos.physics.manybodies.ManyBodiesDemo
+import de.fabmax.kool.demos.demos.physics.manyverhicles.ManyVehiclesDemo
 import de.fabmax.kool.util.Color
 import de.fabmax.kool.util.ColorGradient
 import de.fabmax.kool.util.MdColor
@@ -63,7 +64,7 @@ object Demos {
         entry("hellobuffers", "Hello RenderToTexture") { HelloRenderToTextureDemo() }
         entry("hello-ui", "Hello UI") { HelloUiDemo() }
         entry("manybodies", "Many Bodies") { ManyBodiesDemo() }
-        //entry("manyvehicles", "Many Vehicles") { ManyVehiclesDemo() }
+        entry("manyvehicles", "Many Vehicles") { ManyVehiclesDemo() }
         //entry("ksl-test", "Ksl Shading Test") { KslShaderTest() }
         //entry("gizmo-test", "Gizmo Test") { GizmoTest() }
     }
