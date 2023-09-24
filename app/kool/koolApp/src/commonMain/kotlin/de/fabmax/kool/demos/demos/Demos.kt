@@ -73,7 +73,7 @@ object Demos {
 
         val entries = mutableListOf<Entry>()
 
-        fun getCatalogColor(f: Float): Color {
+        fun getCategoryColor(f: Float): Color {
             return demoColors.getColor(fromColor + f * (toColor - fromColor))
         }
 
@@ -87,7 +87,7 @@ object Demos {
             get() {
                 val catIdx = max(0, category.entries.indexOf(this)).toFloat()
                 val gradientF = catIdx / category.entries.lastIndex
-                return category.getCatalogColor(gradientF)
+                return category.getCategoryColor(gradientF)
             }
     }
 }
