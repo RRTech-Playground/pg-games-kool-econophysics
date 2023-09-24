@@ -9,6 +9,8 @@ import de.fabmax.kool.physics.Physics
 import de.fabmax.kool.util.DebugOverlay
 import de.fabmax.kool.util.Time
 import de.fabmax.kool.demos.ui.LoadingScreen
+import de.fabmax.kool.demos.ui.UiSizes
+import de.fabmax.kool.demos.ui.menu.DemoMenu
 
 fun demo(startScene: String? = null, ctx: KoolContext) {
     // launch demo
@@ -26,13 +28,13 @@ fun demo(startScene: String? = null, ctx: KoolContext) {
 class DemoLoader(ctx: KoolContext, startScene: String? = null) {
 
     val dbgOverlay = DebugOverlay(DebugOverlay.Position.LOWER_RIGHT)
-    //val menu = DemoMenu(this) //Todo: implement menu
+    val menu = DemoMenu(this)
 
     private val loadingScreen = LoadingScreen(ctx)
     private var currentDemo: Pair<String, DemoScene>? = null
     private var switchDemo: Demos.Entry? = null
 
-    //private var initShownMenu = false //Todo: implement menu
+    private var initShownMenu = false
     private var shouldAutoHideMenu = 2.5f
 
     val activeDemo: DemoScene?
@@ -43,7 +45,7 @@ class DemoLoader(ctx: KoolContext, startScene: String? = null) {
         Settings.loadSettings()
 
         ctx.scenes += dbgOverlay.ui
-        //ctx.scenes += menu.ui //Todo: implement menu
+        ctx.scenes += menu.ui
         ctx.onRender += this::onRender
 
         val loadScene = startScene ?: Settings.selectedDemo.value
@@ -70,11 +72,10 @@ class DemoLoader(ctx: KoolContext, startScene: String? = null) {
                     ctx.scenes -= it
                     it.dispose(ctx)
                 }
-                //Todo: implement menu
-                //demo.menuUI?.let {
-                //    menu.ui -= it
-                //    it.dispose(ctx)
-                //}
+                demo.menuUi?.let {
+                    menu.ui -= it
+                    it.dispose(ctx)
+                }
             }
             ctx.scenes.add(0, loadingScreen)
 
@@ -100,16 +101,14 @@ class DemoLoader(ctx: KoolContext, startScene: String? = null) {
                 if (shouldAutoHideMenu > 0f) {
                     shouldAutoHideMenu -= Time.deltaT
                     if (Settings.showMenuOnStartup.value) {
-                        //Todo: implement menu
-                        //if (!initShownMenu) {
-                        //    menu.isExpanded = true
-                        //    initShownMenu = true
-                        //}
+                        if (!initShownMenu) {
+                            menu.isExpanded = true
+                            initShownMenu = true
+                        }
                         val ptr = PointerInput.primaryPointer
-                        //Todo: implement menu
-                        //if (shouldAutoHideMenu <= 0f && (!ptr.isValid || ptr.x > UiSizes.menuWidth.px)) {
-                        //    menu.isExpanded = false
-                        //}
+                        if (shouldAutoHideMenu <= 0f && (!ptr.isValid || ptr.x > UiSizes.menuWidth.px)) {
+                            menu.isExpanded = false
+                        }
                     }
                 }
             }

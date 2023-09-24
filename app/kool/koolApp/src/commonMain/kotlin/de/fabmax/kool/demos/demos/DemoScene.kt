@@ -3,9 +3,17 @@ package de.fabmax.kool.demos.demos
 import de.fabmax.kool.Assets
 import de.fabmax.kool.KoolContext
 import de.fabmax.kool.demos.DemoLoader
+import de.fabmax.kool.demos.config.Settings
 import de.fabmax.kool.demos.ui.LoadingScreen
+import de.fabmax.kool.demos.ui.UiSizes
+import de.fabmax.kool.demos.ui.menu.DemoMenu
+import de.fabmax.kool.demos.ui.menu.renderer.TitleBgRenderer
 import de.fabmax.kool.modules.ui2.*
+import de.fabmax.kool.modules.ui2.docking.UiDockable
 import de.fabmax.kool.scene.Scene
+import de.fabmax.kool.util.Color
+import de.fabmax.kool.util.MdColor
+import de.fabmax.kool.util.MsdfFont
 import de.fabmax.kool.util.delayFrames
 
 abstract class DemoScene(val name: String) {
@@ -20,18 +28,14 @@ abstract class DemoScene(val name: String) {
     val isMenu = mutableStateOf(true)
     val isMenuMinimized = mutableStateOf(false)
 
-    //Todo: implement menu
-    /*
-    private val menuDockable = UIDockable() {
+    private val menuDockable = UiDockable(
         name,
         floatingX = UiSizes.baseSize * 2f,
         floatingY = UiSizes.baseSize * 2f,
         floatingWidth = UiSizes.menuWidth,
         floatingHeight = FitContent,
         floatingAlignmentX = AlignmentX.End
-    }
-
-     */
+    )
 
     var demoLoader: DemoLoader? = null
     var loadingScreen: LoadingScreen? = null
@@ -60,19 +64,16 @@ abstract class DemoScene(val name: String) {
 
         if (demoState == State.SETUP) {
             // setup scene after required resources are loaded in main thread
-            //Todo: implement menu
-            //setupScenes(loader.menu, ctx)
-            setupScenes(ctx)
+            setupScenes(loader.menu, ctx)
             demoState = State.RUNING
         }
     }
 
     //private fun setupScenes(menu: DemoMenu, ctx: KoolContext) {
-    private fun setupScenes(ctx: KoolContext) {
+    private fun setupScenes(menu: DemoMenu, ctx: KoolContext) {
         mainScene.setupMainScene(ctx)
-        //Todo: implement menu
-        //menuUi = createMenu(menu, ctx)
-        //menuUi?.let { menu.ui.addNode(it, 0) }
+        menuUi = createMenu(menu, ctx)
+        menuUi?.let { menu.ui.addNode(it, 0) }
         lateInit(ctx)
     }
 
@@ -81,21 +82,14 @@ abstract class DemoScene(val name: String) {
 
     abstract fun Scene.setupMainScene(ctx: KoolContext)
 
-    //Todo: implement menu
-    /*
-    open fun createMenu(menu: DemoMenu, ctx: KoolContext): UISurface? {
+    open fun createMenu(menu: DemoMenu, ctx: KoolContext): UiSurface? {
         return null
     }
-
-     */
 
     open fun lateInit(ctx: KoolContext) { }
 
     open fun dispose(ctx: KoolContext) { }
 
-
-    //Todo: implement menu
-    /*
     protected fun menuSurface(title: String? = null, block: ColumnScope.() -> Unit): UiSurface {
 
         val accent = demoEntry?.color ?: MdColor.PINK
@@ -105,7 +99,7 @@ abstract class DemoScene(val name: String) {
             menuDockable,
             colors = Colors.singleColorDark(accent, Color("101010d0"))
         ) {
-            is (!isMenu.use()) {
+            if (!isMenu.use()) {
                 // reset window location, so that it will appear at default location when it is shown again
                 menuDockable.setFloatingBounds(
                     x = UiSizes.baseSize * 2f,
@@ -142,10 +136,6 @@ abstract class DemoScene(val name: String) {
         }
     }
 
-     */
-
-    //Todo: implement menu
-    /*
     private fun UiScope.TitleBar(titleTxt: String, cornerRadius: Dp) {
         val titleFrom = demoEntry?.category?.fromColor ?: 0f
         val titleTo = demoEntry?.category?.toColor ?: 0.2f
@@ -200,8 +190,6 @@ abstract class DemoScene(val name: String) {
         }
     }
 
-     */
-
     enum class State {
         NEW,
         LOADING,
@@ -209,11 +197,7 @@ abstract class DemoScene(val name: String) {
         RUNING
     }
 
-    //Todo: implement menu
-    /*
     companion object {
         private val titleBgMesh = TitleBgRenderer.BgMesh()
     }
-
-     */
 }
