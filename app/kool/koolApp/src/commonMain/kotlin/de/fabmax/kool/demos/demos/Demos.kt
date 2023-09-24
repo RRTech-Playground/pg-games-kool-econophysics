@@ -5,6 +5,7 @@ import de.fabmax.kool.demos.demos.hello.HelloGltfDemo
 import de.fabmax.kool.demos.demos.hello.HelloRenderToTextureDemo
 import de.fabmax.kool.demos.demos.hello.HelloUiDemo
 import de.fabmax.kool.demos.demos.hello.HelloWorldDemo
+import de.fabmax.kool.demos.demos.others.GizmoTest
 import de.fabmax.kool.demos.demos.physics.manybodies.ManyBodiesDemo
 import de.fabmax.kool.demos.demos.physics.manyverhicles.ManyVehiclesDemo
 import de.fabmax.kool.demos.demos.shaders.KslShaderTest
@@ -67,7 +68,7 @@ object Demos {
         entry("manybodies", "Many Bodies") { ManyBodiesDemo() }
         entry("manyvehicles", "Many Vehicles") { ManyVehiclesDemo() }
         entry("ksl-test", "Ksl Shading Test") { KslShaderTest() }
-        //entry("gizmo-test", "Gizmo Test") { GizmoTest() }
+        entry("gizmo-test", "Gizmo Test") { GizmoTest() }
     }
 
     val categories = mutableListOf(phyicsDemos, graphicsDemos, techDemos, hiddenDemos)
