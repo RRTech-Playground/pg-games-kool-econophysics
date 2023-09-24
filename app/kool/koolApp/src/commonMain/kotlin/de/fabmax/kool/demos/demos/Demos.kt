@@ -1,6 +1,7 @@
 package de.fabmax.kool.demos.demos
 
 import de.fabmax.kool.KoolContext
+import de.fabmax.kool.demos.demos.hello.HelloGltfDemo
 import de.fabmax.kool.demos.demos.hello.HelloWorldDemo
 import de.fabmax.kool.util.Color
 import de.fabmax.kool.util.ColorGradient
@@ -55,7 +56,7 @@ object Demos {
 
     val hiddenDemos = Category("Hidden", true, 0.75f, 0.95f).apply {
         entry("helloworld", "Hello World") { HelloWorldDemo() }
-        //entry("hellogltf", "Hello glTF") { HelloGltfDemo() }
+        entry("hellogltf", "Hello glTF") { HelloGltfDemo() }
         //entry("hellobuffers", "Hello RenderToTexture") { HelloRenderToTextureDemo() }
         //entry("hello-ui", "Hello UI") { HelloUiDemo() }
         //entry("manybodies", "Many Bodies") { ManyBodiesDemo() }
