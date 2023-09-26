@@ -50,8 +50,7 @@ object Demos {
     //Todo: implement demos
     val phyicsDemos = Category("Physics", false, 0f, 0.2f).apply {
         entry("phys-terrain", "Island") { TerrainDemo() }
-        // Todo: crashes in the browser with error that it cannot play sound, however, sound is imho not even loaded
-        //entry("phys-vehicle", "Vehicle") { VehicleDemo() }
+        entry("phys-vehicle", "Vehicle") { VehicleDemo() }
         //entry("phys-ragdoll", "Ragdolls") { RagdollDemo() }
         //entry("phys-joints", "Joints") { JointsDemo() }
         //entry("physics", "Collision") { CollisionDemo() }

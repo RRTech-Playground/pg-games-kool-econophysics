@@ -2,6 +2,7 @@ package de.fabmax.kool.demos.demos.physics.vehicle.game
 
 import de.fabmax.kool.KoolContext
 import de.fabmax.kool.demos.demos.physics.vehicle.VehicleDemo
+import de.fabmax.kool.demos.demos.physics.vehicle.sound.VehicleAudio
 import de.fabmax.kool.input.DriveAxes
 import de.fabmax.kool.input.InputStack
 import de.fabmax.kool.input.KeyboardInput
