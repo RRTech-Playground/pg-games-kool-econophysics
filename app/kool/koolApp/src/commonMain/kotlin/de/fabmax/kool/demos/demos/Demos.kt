@@ -19,6 +19,7 @@ import de.fabmax.kool.demos.demos.physics.manyverhicles.ManyVehiclesDemo
 import de.fabmax.kool.demos.demos.shaders.KslShaderTest
 import de.fabmax.kool.demos.demos.simulations.bees.BeeDemo
 import de.fabmax.kool.demos.demos.others.simplification.SimplificationDemo
+import de.fabmax.kool.demos.demos.physics.collision.CollisionDemo
 import de.fabmax.kool.demos.demos.physics.island.TerrainDemo
 import de.fabmax.kool.demos.demos.physics.joints.JointsDemo
 import de.fabmax.kool.demos.demos.physics.raddoll.RagdollDemo
@@ -55,7 +56,7 @@ object Demos {
         entry("phys-vehicle", "Vehicle") { VehicleDemo() }
         entry("phys-ragdoll", "Ragdolls") { RagdollDemo() }
         entry("phys-joints", "Joints") { JointsDemo() }
-        //entry("physics", "Collision") { CollisionDemo() }
+        entry("physics", "Collision") { CollisionDemo() }
     }
 
     val graphicsDemos = Category("Graphics", false, 0.25f, 0.45f).apply {
