@@ -20,6 +20,7 @@ kotlin {
     jvm {
         //jvmToolchain(11)
         jvmToolchain(17)
+        //jvmToolchain(21)
     }
     js(IR) {
         binaries.executable()
