@@ -7,11 +7,12 @@ import de.fabmax.kool.demos.demos.hello.HelloGltfDemo
 import de.fabmax.kool.demos.demos.hello.HelloRenderToTextureDemo
 import de.fabmax.kool.demos.demos.hello.HelloUiDemo
 import de.fabmax.kool.demos.demos.hello.HelloWorldDemo
-import de.fabmax.kool.demos.demos.others.GizmoTest
+import de.fabmax.kool.demos.demos.others.gizmo.GizmoTest
 import de.fabmax.kool.demos.demos.physics.manybodies.ManyBodiesDemo
 import de.fabmax.kool.demos.demos.physics.manyverhicles.ManyVehiclesDemo
 import de.fabmax.kool.demos.demos.shaders.KslShaderTest
 import de.fabmax.kool.demos.demos.simulations.bees.BeeDemo
+import de.fabmax.kool.demos.demos.others.simplification.SimplificationDemo
 import de.fabmax.kool.util.Color
 import de.fabmax.kool.util.ColorGradient
 import de.fabmax.kool.util.MdColor
@@ -59,7 +60,7 @@ object Demos {
         entry("creative-coding", "Creative Coding") { CreativeCodingDemo() }
         entry("instance", "Instanced Drawing") { InstanceDemo() }
         entry("bees", "Fighting Bees") { BeeDemo() }
-        //entry("simplification", "Simplification") { SimplificationDemo() }
+        entry("simplification", "Simplification") { SimplificationDemo() }
         //entry("ui", "User Interface") { UiDemo() }
     }
 
