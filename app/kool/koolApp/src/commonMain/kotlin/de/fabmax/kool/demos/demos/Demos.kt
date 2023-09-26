@@ -13,6 +13,7 @@ import de.fabmax.kool.demos.demos.physics.manyverhicles.ManyVehiclesDemo
 import de.fabmax.kool.demos.demos.shaders.KslShaderTest
 import de.fabmax.kool.demos.demos.simulations.bees.BeeDemo
 import de.fabmax.kool.demos.demos.others.simplification.SimplificationDemo
+import de.fabmax.kool.demos.demos.ui.UiDemo
 import de.fabmax.kool.util.Color
 import de.fabmax.kool.util.ColorGradient
 import de.fabmax.kool.util.MdColor
@@ -61,7 +62,7 @@ object Demos {
         entry("instance", "Instanced Drawing") { InstanceDemo() }
         entry("bees", "Fighting Bees") { BeeDemo() }
         entry("simplification", "Simplification") { SimplificationDemo() }
-        //entry("ui", "User Interface") { UiDemo() }
+        entry("ui", "User Interface") { UiDemo() }
     }
 
     val hiddenDemos = Category("Hidden", true, 0.75f, 0.95f).apply {
