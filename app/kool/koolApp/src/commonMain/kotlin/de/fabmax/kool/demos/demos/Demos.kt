@@ -4,6 +4,7 @@ import de.fabmax.kool.KoolContext
 import de.fabmax.kool.demos.demos.creative.creativecoding.CreativeCodingDemo
 import de.fabmax.kool.demos.demos.creative.instance.InstanceDemo
 import de.fabmax.kool.demos.demos.graphics.ao.AoDemo
+import de.fabmax.kool.demos.demos.graphics.deferred.DeferredDemo
 import de.fabmax.kool.demos.demos.graphics.gltf.GltfDemo
 import de.fabmax.kool.demos.demos.graphics.reflections.ReflectionDemo
 import de.fabmax.kool.demos.demos.hello.HelloGltfDemo
@@ -55,7 +56,7 @@ object Demos {
         entry("ao", "Ambient Occlusion") { AoDemo() }
         entry("gltf", "glTF Models") { GltfDemo() }
         entry("ssr", "Reflections") { ReflectionDemo() }
-        //entry("deferred", "Deferred Shading") { DeferredDemo() }
+        entry("deferred", "Deferred Shading") { DeferredDemo() }
         //entry("procedural", "Procedural Roses") { ProceduralDemo() }
         //entry("pbr", "PBR Materials") { PbrDemo() }
     }
