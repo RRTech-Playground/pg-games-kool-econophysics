@@ -1,4 +1,4 @@
-package de.fabmax.kool.demos.demos.others
+package de.fabmax.kool.demos.demos.others.gizmo
 
 import de.fabmax.kool.KoolContext
 import de.fabmax.kool.demos.demos.DemoScene
@@ -22,7 +22,6 @@ import de.fabmax.kool.toString
 import de.fabmax.kool.util.Color
 import de.fabmax.kool.util.Gizmo
 import de.fabmax.kool.util.MdColor
-import kotlin.math.max
 
 class GizmoTest : DemoScene("Gizmo Test") {
     private val gizmo1 = Gizmo()
