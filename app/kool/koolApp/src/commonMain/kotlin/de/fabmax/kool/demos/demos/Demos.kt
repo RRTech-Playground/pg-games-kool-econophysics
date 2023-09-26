@@ -11,6 +11,7 @@ import de.fabmax.kool.demos.demos.others.GizmoTest
 import de.fabmax.kool.demos.demos.physics.manybodies.ManyBodiesDemo
 import de.fabmax.kool.demos.demos.physics.manyverhicles.ManyVehiclesDemo
 import de.fabmax.kool.demos.demos.shaders.KslShaderTest
+import de.fabmax.kool.demos.demos.simulations.bees.BeeDemo
 import de.fabmax.kool.util.Color
 import de.fabmax.kool.util.ColorGradient
 import de.fabmax.kool.util.MdColor
@@ -57,7 +58,7 @@ object Demos {
     val techDemos = Category("Tech", false, 0.5f, 0.7f).apply {
         entry("creative-coding", "Creative Coding") { CreativeCodingDemo() }
         entry("instance", "Instanced Drawing") { InstanceDemo() }
-        //entry("bees", "Fighting Bees") { BeeDemo() }
+        entry("bees", "Fighting Bees") { BeeDemo() }
         //entry("simplification", "Simplification") { SimplificationDemo() }
         //entry("ui", "User Interface") { UiDemo() }
     }
