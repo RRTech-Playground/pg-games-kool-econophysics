@@ -20,6 +20,7 @@ import de.fabmax.kool.demos.demos.shaders.KslShaderTest
 import de.fabmax.kool.demos.demos.simulations.bees.BeeDemo
 import de.fabmax.kool.demos.demos.others.simplification.SimplificationDemo
 import de.fabmax.kool.demos.demos.physics.island.TerrainDemo
+import de.fabmax.kool.demos.demos.physics.joints.JointsDemo
 import de.fabmax.kool.demos.demos.physics.raddoll.RagdollDemo
 import de.fabmax.kool.demos.demos.physics.vehicle.VehicleDemo
 import de.fabmax.kool.demos.demos.ui.UiDemo
@@ -53,7 +54,7 @@ object Demos {
         entry("phys-terrain", "Island") { TerrainDemo() }
         entry("phys-vehicle", "Vehicle") { VehicleDemo() }
         entry("phys-ragdoll", "Ragdolls") { RagdollDemo() }
-        //entry("phys-joints", "Joints") { JointsDemo() }
+        entry("phys-joints", "Joints") { JointsDemo() }
         //entry("physics", "Collision") { CollisionDemo() }
     }
 
