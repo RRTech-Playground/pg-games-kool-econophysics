@@ -19,6 +19,7 @@ import de.fabmax.kool.demos.demos.physics.manyverhicles.ManyVehiclesDemo
 import de.fabmax.kool.demos.demos.shaders.KslShaderTest
 import de.fabmax.kool.demos.demos.simulations.bees.BeeDemo
 import de.fabmax.kool.demos.demos.others.simplification.SimplificationDemo
+import de.fabmax.kool.demos.demos.physics.island.TerrainDemo
 import de.fabmax.kool.demos.demos.ui.UiDemo
 import de.fabmax.kool.util.Color
 import de.fabmax.kool.util.ColorGradient
@@ -47,7 +48,7 @@ object Demos {
 
     //Todo: implement demos
     val phyicsDemos = Category("Physics", false, 0f, 0.2f).apply {
-        //entry("phys-terrain", "Island") { TerrainDemo() }
+        entry("phys-terrain", "Island") { TerrainDemo() }
         //entry("phys-vehicle", "Vehicle") { VehicleDemo() }
         //entry("phys-ragdoll", "Ragdolls") { RagdollDemo() }
         //entry("phys-joints", "Joints") { JointsDemo() }
