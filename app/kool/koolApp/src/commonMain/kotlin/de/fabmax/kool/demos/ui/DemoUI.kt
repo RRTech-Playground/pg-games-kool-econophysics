@@ -2,6 +2,7 @@ package de.fabmax.kool.demos.ui
 
 import de.fabmax.kool.demos.config.Settings
 import de.fabmax.kool.modules.ui2.*
+import de.fabmax.kool.toString
 
 object UiSizes {
     val hGap: Dp get() = Settings.uiSize.value.sizes.gap * 1.25f
@@ -17,9 +18,31 @@ fun UiScope.MenuRow(vGap: Dp = UiSizes.vGap, block: UiScope.() -> Unit) {
         block()
     }
 }
-//Todo: implement menu
+
+//Todo: implement MenuSlider
 //fun UiScope.MenuSlider
-//fun UiScope.MenuSlider2
+
+fun UiScope.MenuSlider2(
+    label: String,
+    value: Float,
+    min: Float,
+    max: Float,
+    txtFormat: (Float) -> String = { it.toString(2) },
+    onChange: (Float) -> Unit
+) {
+    MenuRow {
+        Text(label) { labelStyle(Grow.Std) }
+        Text(txtFormat(value)) { labelStyle() }
+    }
+    MenuRow {
+        Slider(value, min, max) {
+            modifier
+                .width(Grow.Std)
+                .alignY(AlignmentY.Center)
+                .onChange(onChange)
+        }
+    }
+}
 
 fun UiScope.LabeledSwitch(label: String, toggleState: MutableStateValue<Boolean>, onToggle: ((Boolean) -> Unit)? = null) {
     MenuRow {
@@ -41,8 +64,6 @@ fun UiScope.LabeledSwitch(label: String, toggleState: MutableStateValue<Boolean>
     }
 }
 
-//Todo: implement TextScope
-//Todo: implement menu
 fun TextScope.sectionTitleStyle() {
     modifier
         .width(Grow.Std)
