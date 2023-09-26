@@ -19,8 +19,30 @@ fun UiScope.MenuRow(vGap: Dp = UiSizes.vGap, block: UiScope.() -> Unit) {
     }
 }
 
-//Todo: implement MenuSlider
-//fun UiScope.MenuSlider
+fun UiScope.MenuSlider(
+    value: Float,
+    min: Float,
+    max: Float,
+    txtFormat: (Float) -> String = { it.toString(2) },
+    txtWidth: Dp = UiSizes.baseSize,
+    onChangeEnd: ((Float) -> Unit)? = null,
+    onChange: (Float) -> Unit
+) {
+    Slider(value, min, max) {
+        modifier
+            .width(Grow.Std)
+            .alignY(AlignmentY.Center)
+            .margin(horizontal = sizes.gap)
+            .onChange(onChange)
+        modifier.onChangeEnd = onChangeEnd
+    }
+    if (txtWidth.value > 0f) {
+        Text(txtFormat(value)) {
+            labelStyle()
+            modifier.width(txtWidth).textAlignX(AlignmentX.End)
+        }
+    }
+}
 
 fun UiScope.MenuSlider2(
     label: String,

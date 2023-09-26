@@ -2,6 +2,7 @@ package de.fabmax.kool.demos.demos
 
 import de.fabmax.kool.KoolContext
 import de.fabmax.kool.demos.demos.creative.creativecoding.CreativeCodingDemo
+import de.fabmax.kool.demos.demos.creative.instance.InstanceDemo
 import de.fabmax.kool.demos.demos.hello.HelloGltfDemo
 import de.fabmax.kool.demos.demos.hello.HelloRenderToTextureDemo
 import de.fabmax.kool.demos.demos.hello.HelloUiDemo
@@ -55,7 +56,7 @@ object Demos {
 
     val techDemos = Category("Tech", false, 0.5f, 0.7f).apply {
         entry("creative-coding", "Creative Coding") { CreativeCodingDemo() }
-        //entry("instance", "Instanced Drawing") { InstanceDemo() }
+        entry("instance", "Instanced Drawing") { InstanceDemo() }
         //entry("bees", "Fighting Bees") { BeeDemo() }
         //entry("simplification", "Simplification") { SimplificationDemo() }
         //entry("ui", "User Interface") { UiDemo() }
