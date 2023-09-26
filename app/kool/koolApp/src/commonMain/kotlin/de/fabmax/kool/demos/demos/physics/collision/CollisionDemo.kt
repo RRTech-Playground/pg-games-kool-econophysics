@@ -76,7 +76,7 @@ class CollisionDemo : DemoScene("Physics - Collision") {
         lighting.singleDirectionalLight {
             setup(Vec3f(0.8f, -1.2f, 1f))
         }
-        // Todo: not yet pushed to sonytype SNAPSHOT repository
+        // Todo: not yet pushed to sonatype SNAPSHOT repository
         //val shadowMap = CascadedShadowMap(this, lighting.lights[0], maxRange = 300f)
         val shadowMap = CascadedShadowMap(this, 0, maxRange = 300f)
         shadows.add(shadowMap)

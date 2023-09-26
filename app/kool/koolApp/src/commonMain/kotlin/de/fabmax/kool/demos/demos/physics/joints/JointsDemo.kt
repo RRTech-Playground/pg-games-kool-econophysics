@@ -150,7 +150,7 @@ class JointsDemo : DemoScene("Physics - Joints") {
             clear()
             val l1 = Vec3f(80f, 120f, 100f)
             val l2 = Vec3f(-30f, 100f, 100f)
-            // Todo: not yet pushed to sonytype SNAPSHOT repository
+            // Todo: not yet pushed to sonatype SNAPSHOT repository
             //addSpotLight {
             //    setup(l1, MutableVec3f(l1).scale(-1f).norm(), 45f)
             //    setColor(Color.WHITE.mix(MdColor.AMBER, 0.1f), 50000f)
@@ -160,7 +160,7 @@ class JointsDemo : DemoScene("Physics - Joints") {
             //    setColor(Color.WHITE.mix(MdColor.LIGHT_BLUE, 0.1f), 25000f)
             //}
         }
-        // Todo: not yet pushed to sonytype SNAPSHOT repository
+        // Todo: not yet pushed to sonatype SNAPSHOT repository
         //shadows.add(SimpleShadowMap(this, lighting.lights[0]).apply {
         shadows.add(SimpleShadowMap(this, 0).apply {
             clipNear = 100f
@@ -168,7 +168,7 @@ class JointsDemo : DemoScene("Physics - Joints") {
             shaderDepthOffset = -0.2f
             shadowBounds = BoundingBox(Vec3f(-75f, -20f, -75f), Vec3f(75f, 20f, 75f))
         })
-        // Todo: not yet pushed to sonytype SNAPSHOT repository
+        // Todo: not yet pushed to sonatype SNAPSHOT repository
         //shadows.add(SimpleShadowMap(this, lighting.lights[1]).apply {
         shadows.add(SimpleShadowMap(this, 1).apply {
             clipNear = 100f

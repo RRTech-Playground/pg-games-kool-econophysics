@@ -238,11 +238,11 @@ class TerrainDemo : DemoScene("Terrain Demo") {
             setup(Vec3f(-1f, -1f, -1f))
             setColor(Color.WHITE, 1f)
         }
-        // Todo: not yet pushed to sonytype SNAPSHOT repository
+        // Todo: not yet pushed to sonatype SNAPSHOT repository
         //shadowMap = CascadedShadowMap(this@setupMainScene, lighting.lights[0], 300f).apply {
         shadowMap = CascadedShadowMap(this@setupMainScene, 0, 300f).apply {
             setMapRanges(0.035f, 0.17f, 1f)
-            // Todo: not yet pushed to sonytype SNAPSHOT repository
+            // Todo: not yet pushed to sonatype SNAPSHOT repository
             //subMaps.forEach {
             //    it.directionalCamNearOffset = -200f
             //    it.setDefaultDepthOffset(true)

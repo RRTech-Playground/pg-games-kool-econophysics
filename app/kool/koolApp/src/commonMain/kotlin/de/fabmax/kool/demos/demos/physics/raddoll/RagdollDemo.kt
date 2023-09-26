@@ -68,7 +68,7 @@ class RagdollDemo : DemoScene("Ragdoll Demo") {
             mapSize = 0.7f
             radius = 0.5f
         }
-        // Todo: not yet pushed to sonytype SNAPSHOT repository
+        // Todo: not yet pushed to sonatype SNAPSHOT repository
         //shadows += SimpleShadowMap(mainScene, mainScene.lighting.lights[0], 4096).apply {
         shadows += SimpleShadowMap(mainScene, 0, 4096).apply {
             setDefaultDepthOffset(true)
