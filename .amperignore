@@ -1,5 +1,0 @@
-buildSrc
-app/desktop/desktopApp
-app/web/webApp
-app/kool/koolApp
-modules/core/core-ui
