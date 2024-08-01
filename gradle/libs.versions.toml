@@ -8,15 +8,16 @@ androidx-core-ktx = "1.13.1"
 androidx-espresso-core = "3.6.1"
 androidx-material = "1.12.0"
 #gdxLwjgl3GlfwQwtMacos = "1.12.0"
-jbCompose = "1.7.0-alpha02"  # "1.6.11" "1.7.0-alpha02"
+jpCompose = "1.7.0-beta05"  # "1.6.7" "1.7.0-beta03" "1.7.0-beta05"
+jbCompose = "1.7.0-alpha02"  # "1.6.11" "1.7.0-alpha01" "1.7.0-alpha02"
 jbLifecycle = "2.8.0"
-jbNavigation = "2.8.0-beta03"  # "2.7.0-alpha07" "2.8.0-beta03"
+jbNavigation = "2.8.0-beta03"  # "2.7.0-alpha07" "2.8.0-alpha08" "2.8.0-beta03"
 kermit = "2.0.4"
 koin = "4.0.0-RC1" # "3.5.0 "4.0.0-RC1"
 koinCompose = "1.2.0-Beta4"
 kool = "0.15.1"
 kotest = "5.7.2"
-kotlin = "1.9.10"
+kotlin = "2.0.0"
 kotlinxCoroutines = "1.7.3"   # kool has 1.7.1 - we'll see
 kotlinxDatetime = "0.4.1"
 kotlinxSerialization = "1.6.0"
@@ -25,17 +26,63 @@ lwjgl = "3.3.4"
 #lwjgl = "3.3.2:natives-macos"
 physicsJni = "2.0.5"   # 2.2.1 > Kool 0.11.0
 physicsJniCuda = "2.2.1"
+realm = "2.1.0"
+
+# Android project versions
+android-appId = "ch.rrte.pg.games.kool.playground"
+android-compileSdk = "34"
+android-minSdk = "26"
+android-targetSdk = "34"
+android-versionCode = "1"
+android-versionName = "1.0"
 
 
 [libraries]
 
-#
+# Android
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidx-appcompat" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso-core" }
+android-material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
+
 #gdx-lwjgl3-glfw-awt-macos = { module = "com.badlogicgames.gdx:gdx-lwjgl3-glfw-awt-macos", version.ref = "gdxLwjgl3GlfwQwtMacos"}
 
+# Jetbrains
+jetbrains-lifecycle-viewmodel-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "jbLifecycle" }
+jetbrains-navigation-compose = { group = "org.jetbrains.androidx.navigation", name = "navigation-compose", version.ref = "jbNavigation" }
+
+# Jetbrains Compose
+jetbrains-compose-components-resources = { group = "org.jetbrains.compose.components", name = "components-resources", version.ref = "jbCompose" }
+jetbrains-compose-components-uiToolingPreview = { group = "org.jetbrains.compose.components", name = "components-ui-tooling-preview", version.ref = "jbCompose" }
+jetbrains-compose-desktop-currentOs = { module = "org.jetbrains.compose.desktop:desktop", version.ref = "jbCompose" }
+jetbrains-compose-foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "jbCompose" }
+jetbrains-compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "jbCompose" }
+jetbrains-compose-material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "jbCompose" }
+jetbrains-compose-runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "jbCompose" }
+jetbrains-compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "jbCompose" }
+
+# Jetpack Compose
+jetpack-compose-uiTooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "jpCompose" }
+jetpack-compose-uiToolingPreview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "jpCompose" }
+
 # Koin
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
+#koin-android = { module = "io.insert-koin:koin-android" }
+#koin-android-test = { module = "io.insert-koin:koin-android-test" }
+#koin-android-compat = { module = "io.insert-koin:koin-android-compat" }
+#koin-androidx-navigation = { module = "io.insert-koin:koin-androidx-navigation" }
+#koin-androidx-workmanager = { module = "io.insert-koin:koin-android-workmanager" }
+#koin-androidx-compose = { module = "io.insert-koin:koin-compose" }
+#koin-androidx-compose-navigation = { module = "io.insert-koin:koin-compose-navigation" }
+koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinCompose" }
+#koin-core-coroutines = { module = "io.insert-koin:koin-core-coroutines" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin"}
 koin-core-js = { module = "io.insert-koin:koin-core-js", version.ref = "koin"}
 koin-core-jvm = { module = "io.insert-koin:koin-core-jvm", version.ref = "koin"}
+#koin-ktor = { module = "io.insert-koin:koin-ktor"}
+#koin-logger-slf4j = { module = "io.insert-koin:koin-logger-slf4j"}
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin"}
 koin-test-junit5 = { module = "io.insert-koin:koin-test-junit5", version.ref = "koin"}
 
@@ -51,6 +98,8 @@ kotest-framework-property = { module = "io.kotest:kotest-property", version.ref 
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 
 # Kotlin
+#kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+#kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinxCoroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
@@ -59,8 +108,11 @@ kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerialization" }
 
 # Ktor
+#ktor-client-auth = { module = "io.ktor:ktor-client-auth", version.ref = "ktor" }
+#ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+#ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
 # LWJGL
@@ -77,8 +129,20 @@ lwjgl-stb = { module = "org.lwjgl:lwjgl-stb", version.ref = "lwjgl"}
 physixjni = { module = "de.fabmax:physx-jni", version.ref = "physicsJni"}
 physixjni-cuda = { module = "de.fabmax:physx-jni-cuda", version.ref = "physicsJniCuda"}
 
+# Realm by MongoDB
+realm-kotlin-library-base = { module = "io.realm.kotlin:library-base", version.ref = "realm" }
+realm-kotlin-library-sync = { module = "io.realm.kotlin:library-sync", version.ref = "realm" }
+
+# Toughlab
+touchlab-kermit = { module = "co.touchlab:kermit", version.ref = "kermit" }
 
 [plugins]
-jetbrains-compose = { id = "org.jetbrains.compose", version.ref = "jbCompose" }
-kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotest-multiplatform = { id = "io.kotest.multiplatform", version.ref = "kotest" }
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+jbComposeCompiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+jbComposeMultiplatform = { id = "org.jetbrains.compose", version.ref = "jbCompose" }
+kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlinSerlialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinxSerialization"}
+
+kotestMultiplatform = { id = "io.kotest.multiplatform", version.ref = "kotest" }
+realm-kotlin = { id = "io.realm.kotlin", version.ref = "realm" }
