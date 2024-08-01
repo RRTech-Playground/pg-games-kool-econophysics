@@ -1,15 +1,27 @@
 [versions]
-gdxLwjgl3GlfwQwtMacos = "1.12.0"
-jbCompose = "1.5.1"
-koin = "3.5.0"
-kool = "0.11.0"     # "0.12.1-SNAPSHOT" - newer but minor breaking changes might occur from time to time
+agp = "8.2.2"  # 8.4.0 not supported yet
+android-tools = "31.5.1" # fixes vulnerability CVE-2023-2976 of 31.2.2
+androidx-activity-compose = "1.9.0"
+androidx-appcompat = "1.7.0"
+androidx-constraintlayout = "2.1.4"
+androidx-core-ktx = "1.13.1"
+androidx-espresso-core = "3.6.1"
+androidx-material = "1.12.0"
+#gdxLwjgl3GlfwQwtMacos = "1.12.0"
+jbCompose = "1.7.0-alpha02"  # "1.6.11" "1.7.0-alpha02"
+jbLifecycle = "2.8.0"
+jbNavigation = "2.8.0-beta03"  # "2.7.0-alpha07" "2.8.0-beta03"
+kermit = "2.0.4"
+koin = "4.0.0-RC1" # "3.5.0 "4.0.0-RC1"
+koinCompose = "1.2.0-Beta4"
+kool = "0.15.1"
 kotest = "5.7.2"
 kotlin = "1.9.10"
 kotlinxCoroutines = "1.7.3"   # kool has 1.7.1 - we'll see
 kotlinxDatetime = "0.4.1"
 kotlinxSerialization = "1.6.0"
 ktor = "2.3.4"
-lwjgl = "3.3.2"
+lwjgl = "3.3.4"
 #lwjgl = "3.3.2:natives-macos"
 physicsJni = "2.0.5"   # 2.2.1 > Kool 0.11.0
 physicsJniCuda = "2.2.1"
@@ -18,7 +30,7 @@ physicsJniCuda = "2.2.1"
 [libraries]
 
 #
-gdx-lwjgl3-glfw-awt-macos = { module = "com.badlogicgames.gdx:gdx-lwjgl3-glfw-awt-macos", version.ref = "gdxLwjgl3GlfwQwtMacos"}
+#gdx-lwjgl3-glfw-awt-macos = { module = "com.badlogicgames.gdx:gdx-lwjgl3-glfw-awt-macos", version.ref = "gdxLwjgl3GlfwQwtMacos"}
 
 # Koin
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin"}
