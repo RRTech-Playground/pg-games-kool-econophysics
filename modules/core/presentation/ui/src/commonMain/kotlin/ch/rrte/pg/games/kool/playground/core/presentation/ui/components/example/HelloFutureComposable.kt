@@ -1,4 +1,4 @@
-package ch.rrte.pg.games.kool.playground.core.ui.components.example
+package ch.rrte.pg.games.kool.playground.core.presentation.ui.components.example
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

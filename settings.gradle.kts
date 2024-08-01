@@ -31,3 +31,5 @@ dependencyResolutionManagement {
 
 include("composeApp")
 //include("koolApp")
+
+include(":modules:core:presentation:ui")

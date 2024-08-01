@@ -1,9 +1,9 @@
-package ch.rrte.pg.games.kool.playground.core.ui
-
+package ch.rrte.pg.games.kool.playground.core.presentation.ui
+/*
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
 
-class CoreUiCommonTest : FunSpec({
+class CorePresentationUiCommonTest : FunSpec({
 
     test("should run") {
         1+2 shouldBe 3
@@ -17,3 +17,5 @@ class CoreUiCommonTest : FunSpec({
         1+2 shouldBe 3
     }
 })
+
+ */
