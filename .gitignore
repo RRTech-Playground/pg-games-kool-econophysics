@@ -12,6 +12,22 @@
 build/
 !gradle/wrapper/gradle-wrapper.jar
 
+### Android
+local.properties
+/local.properties
+
+### KMP
+.kotlin
+**/build/
+xcuserdata
+!src/**/build/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+
 ### Kool
 .httpCache
 .storage
@@ -20,3 +36,9 @@ kotlin-js-store
 *.kjsm
 *.meta.js
 local.properties
+
+### Others
+captures
+.externalNativeBuild
+.cxx
+.DS_Store
