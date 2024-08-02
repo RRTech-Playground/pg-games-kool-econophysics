@@ -1,3 +1,4 @@
+/*
 package th0t_sl4y3r.koolAimTrainer
 
 import de.fabmax.kool.math.Vec3f
@@ -55,3 +56,5 @@ class CubesSpawner{
         }
     }
 }
+
+ */

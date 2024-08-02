@@ -1,9 +1,10 @@
+/*
 package th0t_sl4y3r.koolAimTrainer
 
 import de.fabmax.kool.KoolContext
 import de.fabmax.kool.input.InputStack
 import de.fabmax.kool.input.PointerState
-import de.fabmax.kool.math.Ray
+//import de.fabmax.kool.math.Ray
 import de.fabmax.kool.math.Vec3f
 import de.fabmax.kool.modules.ui2.*
 import de.fabmax.kool.physics.ConstantPhysicsStepperSync
@@ -112,3 +113,5 @@ private class MyMouseListener(var scene:Scene):InputStack.PointerListener{
     }
 
 }
+
+ */
