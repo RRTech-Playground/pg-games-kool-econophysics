@@ -2,9 +2,9 @@ package ch.rrte.pg.games.kool.playground.app
 
 import de.fabmax.kool.KoolContext
 import de.fabmax.kool.math.Vec3f
+import de.fabmax.kool.math.deg
 import de.fabmax.kool.modules.ksl.KslPbrShader
 import de.fabmax.kool.scene.addColorMesh
-import de.fabmax.kool.scene.colorMesh
 import de.fabmax.kool.scene.defaultOrbitCamera
 import de.fabmax.kool.scene.scene
 import de.fabmax.kool.util.Color
@@ -25,13 +25,13 @@ fun launchApp(ctx: KoolContext) {
         addColorMesh {
             generate {
                 // called once on init: generates a cube with different (vertex-)colors assigned to each side
-                cube(centered = true) {
+                cube {
                     colored()
                 }
             }
             onUpdate {
-                // called on each frame: spins the cube around its x-axis
-                transform.rotate(Time.deltaT * 45f, Vec3f.X_AXIS)
+                // called on each frame: spins the cube around its x-axis by 45 degrees per second
+                transform.rotate(45f.deg * Time.deltaT, Vec3f.X_AXIS)
             }
             // assign a shader, which uses the vertex color info
             shader = KslPbrShader {
@@ -42,15 +42,6 @@ fun launchApp(ctx: KoolContext) {
         }
 
         // set up a single light source - Kool version 0.11.0
-        /*
-        lighting.singleLight {
-            setDirectional(Vec3f(-1f, -1f, -1f))
-            setColor(Color.WHITE, 5f)
-        }
-
-         */
-
-        // Kool version 0.12.1-SNAPSHOT
         lighting.singleDirectionalLight {
             setup(Vec3f(-1f, -1f, -1f))
             setColor(Color.WHITE, 5f)

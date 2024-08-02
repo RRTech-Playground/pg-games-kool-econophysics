@@ -1,3 +1,4 @@
+/*
 import de.fabmax.kool.platform.webgpu.*
 import kotlinx.browser.document
 import kotlinx.browser.window
@@ -267,3 +268,5 @@ fun launch(block: suspend () -> Unit) {
         }
     })
 }
+
+ */
