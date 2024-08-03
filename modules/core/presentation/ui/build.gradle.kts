@@ -1,5 +1,6 @@
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalDistributionDsl
 import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 
@@ -29,6 +30,25 @@ kotlin {
             }
         }
         binaries.library()
+    }
+
+    js {
+        binaries.executable()
+        browser {
+            @OptIn(ExperimentalDistributionDsl::class)
+            distribution(Action {
+                outputDirectory.set(File("${rootDir}/dist/js"))
+            })
+            commonWebpackConfig { // from Template
+                //mode = KotlinWebpackConfig.Mode.PRODUCTION
+                mode = KotlinWebpackConfig.Mode.DEVELOPMENT
+            }
+            @OptIn(ExperimentalKotlinGradlePluginApi::class)
+            compilerOptions {
+                target.set("es2015")
+            }
+            binaries.library()
+        }
     }
 
     androidTarget {
