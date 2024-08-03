@@ -80,10 +80,9 @@ object OceanShader {
     private fun KslLitShader.LitShaderConfig.Builder.baseConfig(shadowMap: ShadowMap, isInvertedDepth: Boolean) {
         vertices { isInstanced = true }
         color { constColor(MdColor.CYAN.toLinear()) }
-        lighting {
-            addShadowMap(shadowMap)
-            dualImageBasedAmbientLight()
-        }
+        shadow { addShadowMap(shadowMap) }
+        dualImageBasedAmbientColor()
+        colorSpaceConversion = ColorSpaceConversion.LINEAR_TO_sRGB_HDR
         modelCustomizer = { oceanMod(isInvertedDepth) }
     }
 
@@ -208,7 +207,7 @@ object OceanShader {
                 val oceanAlpha = clamp((oceanDepth2 - 0.5f.const) / 12f.const, 0.5f.const, 1f.const)
                 `if`(oceanAlpha lt 1f.const) {
                     oceanFloorColor set sampleTexture(oceanFloorColorTex, refractUv, 0f.const)
-                    oceanFloorColor.rgb set convertColorSpace(oceanFloorColor.rgb, ColorSpaceConversion.SrgbToLinear())
+                    oceanFloorColor.rgb set convertColorSpace(oceanFloorColor.rgb, ColorSpaceConversion.sRGB_TO_LINEAR)
                 }
 
                 val waterColor = mix(oceanFloorColor, baseColor, oceanAlpha)

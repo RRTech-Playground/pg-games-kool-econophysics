@@ -61,29 +61,32 @@ class CreativeCodingDemo : DemoScene("Creative Coding") {
     }
 
     override fun createMenu(menu: DemoMenu, ctx: KoolContext) = menuSurface {
-        Column(Grow.Std, scopeName = "content-${contentIndex.value}") {
-            LabeledSwitch("Auto rotate view:", isAutoRotate)
+        LabeledSwitch("Auto rotate view:", isAutoRotate)
 
-            MenuRow {
-                Text("Scene:") {
-                    modifier
-                        .alignY(AlignmentY.Center)
-                        .margin(end = sizes.largeGap)
-                }
-                ComboBox {
-                    modifier
-                        .width(Grow.Std)
-                        .items(contents)
-                        .selectedIndex(contentIndex.use())
-                        .onItemSelected { selectContent(it) }
-                }
+        MenuRow {
+            Text("Scene:") {
+                modifier
+                    .alignY(AlignmentY.Center)
+                    .margin(end = sizes.largeGap)
             }
-
-            divider()
-
-            with(content) {
-                settingsMenu()
+            ComboBox {
+                modifier
+                    .width(Grow.Std)
+                    .items(contents)
+                    .selectedIndex(contentIndex.use())
+                    .onItemSelected {
+                        selectContent(it)
+                        // somewhat ugly: make sure the remembered() settings values are reset when switching
+                        // between scenes
+                        this@menuSurface.clearMemory()
+                    }
             }
+        }
+
+        divider()
+
+        with(content) {
+            settingsMenu()
         }
     }
 

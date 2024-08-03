@@ -410,13 +410,11 @@ object GearChainMeshGen {
     private fun makeMeshShader(ibl: EnvironmentMaps, aoMap: Texture2d, shadows: List<ShadowMap>) = KslPbrShader {
         color { vertexColor() }
         vertices { isInstanced = true }
+        shadow { addShadowMaps(shadows) }
         roughness { vertexProperty(attribRoughness) }
         metallic { vertexProperty(attribMetallic) }
         enableSsao(aoMap)
-        lighting {
-            addShadowMaps(shadows)
-            imageBasedAmbientLight(ibl.irradianceMap)
-        }
+        imageBasedAmbientColor(ibl.irradianceMap)
         reflectionMap = ibl.reflectionMap
     }
 

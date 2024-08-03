@@ -32,7 +32,7 @@ class SimplificationDemo : DemoScene("Simplification") {
     private val modelWireframe = TriangulatedLineMesh().apply {
         shader = TriangulatedLineMesh.Shader {
             color { vertexColor() }
-            colorSpaceConversion = ColorSpaceConversion.AsIs
+            colorSpaceConversion = ColorSpaceConversion.AS_IS
             depthFactor = 0.9999f
         }
     }
@@ -40,8 +40,8 @@ class SimplificationDemo : DemoScene("Simplification") {
     private val simplifcationRatio = mutableStateOf(1f)
     private val isAutoSimplify = mutableStateOf(true)
     private val isAutoRotate = mutableStateOf(true)
-    private val isSolidVisible = mutableStateOf(true).onChange { _, new -> dispModel.isVisible = new }
-    private val isWireframeVisible = mutableStateOf(true).onChange { _, new -> modelWireframe.isVisible = new }
+    private val isSolidVisible = mutableStateOf(true).onChange { dispModel.isVisible = it }
+    private val isWireframeVisible = mutableStateOf(true).onChange { modelWireframe.isVisible = it }
 
     private val simplifiedNumFaces = mutableStateOf(0)
     private val simplifiedNumVerts = mutableStateOf(0)

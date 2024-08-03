@@ -86,8 +86,20 @@ class KslShaderTest : DemoScene("KslShader") {
                 }
 
                 shader = KslBlinnPhongShader {
-                    color { vertexColor() }
-                    lighting { addShadowMaps(shadowMaps) }
+                    color {
+                        vertexColor()
+                    }
+                    shadow {
+                        addShadowMaps(shadowMaps)
+                    }
+
+//                    modelCustomizer = {
+//                        fragmentStage {
+//                            main {
+//                                colorOutput(Vec4f(1f, 0f, 0f, 1f).const)
+//                            }
+//                        }
+//                    }
                 }
             }
 
@@ -162,7 +174,7 @@ class KslShaderTest : DemoScene("KslShader") {
                     textureColor(colorMap)
                 }
                 normalMapping { setNormalMap(normalMap) }
-                lighting { addShadowMaps(shadowMaps) }
+                shadow { addShadowMaps(shadowMaps) }
                 pipeline { cullMethod = CullMethod.NO_CULLING }
 
                 modelCustomizer = {

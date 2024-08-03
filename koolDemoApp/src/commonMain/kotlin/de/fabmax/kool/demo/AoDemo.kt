@@ -41,17 +41,17 @@ class AoDemo : DemoScene("Ambient Occlusion") {
     )
     private val teapotMesh: Mesh get() = teapot.meshes.values.first()
 
-    private val isAoEnabled = mutableStateOf(true).onChange { _, new -> aoPipeline.isEnabled = new }
+    private val isAoEnabled = mutableStateOf(true).onChange { aoPipeline.isEnabled = it }
     private val isAutoRotate = mutableStateOf(true)
-    private val isSpotLight = mutableStateOf(true).onChange { _, new -> updateLighting(new) }
+    private val isSpotLight = mutableStateOf(true).onChange { updateLighting(it) }
     private val showAoMapValues = listOf("None", "Filtered", "Noisy")
     private val showAoMapIndex = mutableStateOf(0)
 
-    private val aoRadius = mutableStateOf(1f).onChange { _, new -> aoPipeline.radius = new }
-    private val aoPower = mutableStateOf(1f).onChange { _, new -> aoPipeline.power = new }
-    private val aoStrength = mutableStateOf(1f).onChange { _, new -> aoPipeline.strength = new }
-    private val aoSamples = mutableStateOf(16).onChange { _, new -> aoPipeline.kernelSz = new }
-    private val aoMapSize = mutableStateOf(1f).onChange { _, new -> aoPipeline.mapSize = new }
+    private val aoRadius = mutableStateOf(1f).onChange { aoPipeline.radius = it }
+    private val aoPower = mutableStateOf(1f).onChange { aoPipeline.power = it }
+    private val aoStrength = mutableStateOf(1f).onChange { aoPipeline.strength = it }
+    private val aoSamples = mutableStateOf(16).onChange { aoPipeline.kernelSz = it }
+    private val aoMapSize = mutableStateOf(1f).onChange { aoPipeline.mapSize = it }
 
     override fun Scene.setupMainScene(ctx: KoolContext) {
         updateLighting(isSpotLight.value)
@@ -99,12 +99,10 @@ class AoDemo : DemoScene("Ambient Occlusion") {
             }
             val shader = KslPbrShader {
                 color { vertexColor() }
+                shadow { addShadowMaps(shadows) }
                 roughness(0.1f)
                 enableSsao(aoPipeline.aoMap)
-                lighting {
-                    addShadowMaps(shadows)
-                    imageBasedAmbientLight(ibl.irradianceMap)
-                }
+                imageBasedAmbientColor(ibl.irradianceMap)
                 reflectionMap = ibl.reflectionMap
             }
             this.shader = shader
@@ -178,17 +176,15 @@ class AoDemo : DemoScene("Ambient Occlusion") {
             }
 
             val shader = KslPbrShader {
+                shadow { addShadowMaps(shadows) }
                 color { textureColor(albedoMap) }
                 normalMapping { setNormalMap(normalMap) }
                 roughness { textureProperty(roughnessMap) }
                 ao {
-                    textureProperty(ambientOcclusionMap)
-                }
-                lighting {
+                    materialAo.textureProperty(ambientOcclusionMap)
                     enableSsao(aoPipeline.aoMap)
-                    imageBasedAmbientLight(ibl.irradianceMap)
-                    addShadowMaps(shadows)
                 }
+                imageBasedAmbientColor(ibl.irradianceMap)
                 reflectionMap = ibl.reflectionMap
             }
             this.shader = shader

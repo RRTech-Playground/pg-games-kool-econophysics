@@ -17,8 +17,7 @@ abstract class DemoScene(val name: String) {
 
     protected val resources = ResourceGroup()
 
-    var mainScene = Scene(name)
-        protected set
+    val mainScene = Scene(name)
     var menuUi: UiSurface? = null
     val scenes = mutableListOf(mainScene)
 

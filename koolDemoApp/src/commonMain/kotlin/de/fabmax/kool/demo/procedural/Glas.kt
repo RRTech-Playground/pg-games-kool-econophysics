@@ -46,7 +46,7 @@ class Glas(val ibl: EnvironmentMaps, shadowMap: SimpleShadowMap) : Node(), Defer
         }
         shader = KslPbrShader {
             color { vertexColor() }
-            lightingCfg.imageBasedAmbientLight(ibl.irradianceMap)
+            imageBasedAmbientColor(ibl.irradianceMap)
             reflectionMap = ibl.reflectionMap
             roughness(0f)
             alphaMode = AlphaMode.Blend
@@ -208,7 +208,7 @@ class Glas(val ibl: EnvironmentMaps, shadowMap: SimpleShadowMap) : Node(), Defer
         companion object {
             fun glassShaderConfig(ibl: EnvironmentMaps, shadowMap: SimpleShadowMap) = Config.Builder().apply {
                 color { vertexColor() }
-                lighting { addShadowMap(shadowMap) }
+                shadow { addShadowMap(shadowMap) }
                 roughness(0f)
                 enableImageBasedLighting(ibl)
             }.build()

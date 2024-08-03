@@ -24,17 +24,17 @@ class PbrMaterialContent(val sphereProto: PbrDemo.SphereProto, val scene: Scene)
     private var vertexDisplacedContent: Mesh? = null
     private var parallaxContent: Mesh? = null
 
-    private val useParallaxMapping = mutableStateOf(true).onChange { _, new ->
-        parallaxContent?.isVisible = new
-        vertexDisplacedContent?.isVisible = !new
+    private val useParallaxMapping = mutableStateOf(true).onChange {
+        parallaxContent?.isVisible = it
+        vertexDisplacedContent?.isVisible = !it
     }
     private val selectedMatIdx = mutableStateOf(3)
     private val loadedMaterials = Array<MaterialMaps?>(materialLoaders.size) { null }
 
-    private val displacement = mutableStateOf(0.35f).onChange { _, new ->
+    private val displacement = mutableStateOf(0.35f).onChange { disp ->
         shaders.forEach {
-            it.parallaxStrength = new
-            it.vertexDisplacementStrength = new
+            it.parallaxStrength = disp
+            it.vertexDisplacementStrength = disp
         }
     }
 
@@ -51,7 +51,7 @@ class PbrMaterialContent(val sphereProto: PbrDemo.SphereProto, val scene: Scene)
                 it.normalMap = maps.normal
                 it.roughnessMap = maps.roughness
                 it.metallicMap = maps.metallic ?: defaultMetallicTex
-                it.aoMap = maps.ao ?: defaultAoTex
+                it.materialAoMap = maps.ao ?: defaultAoTex
                 it.vertexDisplacementMap = maps.displacement ?: defaultDispTex
                 it.parallaxMap = maps.displacement ?: defaultParallaxTex
             }
@@ -121,7 +121,7 @@ class PbrMaterialContent(val sphereProto: PbrDemo.SphereProto, val scene: Scene)
             normalMapping { setNormalMap() }
             roughness { textureProperty() }
             metallic { textureProperty() }
-            ao { textureProperty() }
+            ao { materialAo { textureProperty() } }
             vertices {
                 displacement {
                     textureProperty()
@@ -129,7 +129,7 @@ class PbrMaterialContent(val sphereProto: PbrDemo.SphereProto, val scene: Scene)
                     uniformProperty(displacement.value, blendMode = PropertyBlockConfig.BlendMode.Multiply)
                 }
             }
-            lighting { imageBasedAmbientLight(envMaps.irradianceMap) }
+            imageBasedAmbientColor(envMaps.irradianceMap)
             reflectionMap = envMaps.reflectionMap
         }
         this.shader = shader
@@ -146,15 +146,18 @@ class PbrMaterialContent(val sphereProto: PbrDemo.SphereProto, val scene: Scene)
             normalMapping { setNormalMap() }
             roughness { textureProperty() }
             metallic { textureProperty() }
-            ao { textureProperty() }
+            ao { materialAo { textureProperty() } }
             vertices {
                 displacement {
                     constProperty(0.5f)
                     uniformProperty(displacement.value, blendMode = PropertyBlockConfig.BlendMode.Multiply)
                 }
             }
-            parallaxMapping { useParallaxMap(strength = displacement.value, maxSteps = 16) }
-            lighting { imageBasedAmbientLight(envMaps.irradianceMap) }
+            parallaxMapping {
+                useParallaxMap(strength = displacement.value, maxSteps = 16)
+            }
+
+            imageBasedAmbientColor(envMaps.irradianceMap)
             reflectionMap = envMaps.reflectionMap
         }
         this.shader = shader

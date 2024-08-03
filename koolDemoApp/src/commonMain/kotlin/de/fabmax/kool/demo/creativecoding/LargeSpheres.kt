@@ -28,10 +28,8 @@ class LargeSpheres(val resources: CreativeCodingDemo.Resources) : CreativeConten
             color { instanceColor() }
             metallic(0f)
             roughness(0.25f)
-            lighting {
-                addShadowMaps(resources.shadowMaps)
-                imageBasedAmbientLight(resources.imageEnv.irradianceMap)
-            }
+            shadow { addShadowMaps(resources.shadowMaps) }
+            imageBasedAmbientColor(resources.imageEnv.irradianceMap)
             reflectionMap = resources.imageEnv.reflectionMap
         }
 

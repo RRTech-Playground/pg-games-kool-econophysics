@@ -43,9 +43,9 @@ class JointsDemo : DemoScene("Physics - Joints") {
     private val motorDirection = mutableStateOf(1f)
     private val numLinks = mutableStateOf(40)
 
-    private val drawNiceMeshes = mutableStateOf(true).onChange { _, new -> niceMeshes.isVisible = new }
-    private val drawPhysMeshes = mutableStateOf(false).onChange { _, new -> physMeshes.isVisible = new }
-    private val drawJointInfos = mutableStateOf(false).onChange { _, new -> constraintInfo.isVisible = new }
+    private val drawNiceMeshes = mutableStateOf(true).onChange { niceMeshes.isVisible = it }
+    private val drawPhysMeshes = mutableStateOf(false).onChange { physMeshes.isVisible = it }
+    private val drawJointInfos = mutableStateOf(false).onChange { constraintInfo.isVisible = it }
 
     private val physicsTimeTxt = mutableStateOf("0.00 ms")
     private val numBodiesTxt = mutableStateOf("0")
@@ -103,11 +103,9 @@ class JointsDemo : DemoScene("Physics - Joints") {
             shader = KslPbrShader {
                 color { textureColor(groundAlbedo) }
                 normalMapping { setNormalMap(groundNormal) }
+                shadow { addShadowMaps(shadows) }
                 enableSsao(aoPipeline.aoMap)
-                lighting {
-                    addShadowMaps(shadows)
-                    imageBasedAmbientLight(ibl.irradianceMap)
-                }
+                imageBasedAmbientColor(ibl.irradianceMap)
                 reflectionMap = ibl.reflectionMap
             }
         }
@@ -522,11 +520,9 @@ class JointsDemo : DemoScene("Physics - Joints") {
                     vertices { isInstanced = true }
                     color { vertexColor() }
                     roughness(1f)
+                    shadow { addShadowMaps(shadows) }
                     enableSsao(aoPipeline.aoMap)
-                    lighting {
-                        addShadowMaps(shadows)
-                        imageBasedAmbientLight(ibl.irradianceMap)
-                    }
+                    imageBasedAmbientColor(ibl.irradianceMap)
                     reflectionMap = ibl.reflectionMap
                 }
             }

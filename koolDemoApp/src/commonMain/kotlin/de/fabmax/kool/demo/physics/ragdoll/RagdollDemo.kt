@@ -54,7 +54,7 @@ class RagdollDemo : DemoScene("Ragdoll Demo") {
     private val bodyMaterialCfg: KslPbrShader.Config.Builder.() -> Unit = {
         color { vertexColor() }
         enableImageBasedLighting(ibl)
-        lighting { addShadowMaps(shadows) }
+        shadow { addShadowMaps(shadows) }
         enableSsao(ao.aoMap)
         roughness(0.8f)
     }
@@ -109,10 +109,8 @@ class RagdollDemo : DemoScene("Ragdoll Demo") {
                 shader = KslPbrShader {
                     color { textureColor(groundAlbedo) }
                     normalMapping { setNormalMap(groundNormal) }
-                    lighting {
-                        addShadowMaps(shadows)
-                        imageBasedAmbientLight(ibl.irradianceMap)
-                    }
+                    shadow { addShadowMaps(shadows) }
+                    imageBasedAmbientColor(ibl.irradianceMap)
                     enableSsao(ao.aoMap)
                     reflectionMap = ibl.reflectionMap
                 }
@@ -480,12 +478,10 @@ class RagdollDemo : DemoScene("Ragdoll Demo") {
     private fun instancedBodyShader() = KslPbrShader {
         vertices { isInstanced = true }
         color { instanceColor(ATTRIB_COLOR) }
+        shadow { addShadowMaps(shadows) }
         enableSsao(ao.aoMap)
         roughness(0.8f)
-        lighting {
-            addShadowMaps(shadows)
-            imageBasedAmbientLight(ibl.irradianceMap)
-        }
+        imageBasedAmbientColor(ibl.irradianceMap)
         reflectionMap = ibl.reflectionMap
     }
 

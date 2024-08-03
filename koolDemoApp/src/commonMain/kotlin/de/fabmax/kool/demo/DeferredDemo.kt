@@ -40,18 +40,18 @@ class DeferredDemo : DemoScene("Deferred Shading") {
     private val lightCount = mutableStateOf(2000)
     private val lightPower = mutableStateOf(1f)
     private val lightRadius = mutableStateOf(1f)
-    private val isObjects = mutableStateOf(true).onChange { _, new -> objects.isVisible = new }
-    private val isLightBodies = mutableStateOf(true).onChange { _, new -> lightPositionMesh.isVisible = new }
-    private val isLightVolumes = mutableStateOf(false).onChange { _, new -> lightVolumeMesh.isVisible = new }
-    private val roughness = mutableStateOf(0.15f).onChange { _, new -> objectShader.roughness = new }
-    private val bloomStrength = mutableStateOf(0.75f).onChange { _, new -> deferredPipeline.bloomStrength = new }
-    private val bloomRadius = mutableStateOf(0.5f).onChange { _, new -> deferredPipeline.bloomScale = new }
-    private val bloomThreshold = mutableStateOf(0.5f).onChange { _, new ->
-        deferredPipeline.bloom?.lowerThreshold = new
-        deferredPipeline.bloom?.upperThreshold = new + 0.5f
+    private val isObjects = mutableStateOf(true).onChange { objects.isVisible = it }
+    private val isLightBodies = mutableStateOf(true).onChange { lightPositionMesh.isVisible = it }
+    private val isLightVolumes = mutableStateOf(false).onChange { lightVolumeMesh.isVisible = it }
+    private val roughness = mutableStateOf(0.15f).onChange { objectShader.roughness = it }
+    private val bloomStrength = mutableStateOf(0.75f).onChange { deferredPipeline.bloomStrength = it }
+    private val bloomRadius = mutableStateOf(0.5f).onChange { deferredPipeline.bloomScale = it }
+    private val bloomThreshold = mutableStateOf(0.5f).onChange {
+        deferredPipeline.bloom?.lowerThreshold = it
+        deferredPipeline.bloom?.upperThreshold = it + 0.5f
     }
 
-    private val ibl by hdriSingleColor(Color(0.22f, 0.22f, 0.22f))
+    private val ibl by hdriSingleColor(Color(0.15f, 0.15f, 0.15f))
     private val groundColor by texture2d("${DemoLoader.materialPath}/futuristic-panels1/futuristic-panels1-albedo1.jpg")
     private val groundNormals by texture2d("${DemoLoader.materialPath}/futuristic-panels1/futuristic-panels1-normal.jpg")
     private val groundRoughness by texture2d("${DemoLoader.materialPath}/futuristic-panels1/futuristic-panels1-roughness.jpg")
@@ -113,7 +113,7 @@ class DeferredDemo : DemoScene("Deferred Shading") {
             bloomStrength = this@DeferredDemo.bloomStrength.value
             setBloomBrightnessThresholds(bloomThreshold.value, bloomThreshold.value + 0.5f)
 
-            lightingPassContent += Skybox.cube(ibl.reflectionMap, 1f, colorSpaceConversion = ColorSpaceConversion.AsIs)
+            lightingPassContent += Skybox.cube(ibl.reflectionMap, 1f, hdrOutput = true)
         }
         deferredPipeline.sceneContent.makeContent()
         addNode(deferredPipeline.createDefaultOutputQuad())
@@ -133,7 +133,7 @@ class DeferredDemo : DemoScene("Deferred Shading") {
                 shader = KslUnlitShader {
                     vertices { isInstanced = true }
                     color { instanceColor(Attribute.COLORS) }
-                    colorSpaceConversion = ColorSpaceConversion.LinearToSrgb()
+                    colorSpaceConversion = ColorSpaceConversion.LINEAR_TO_sRGB
                 }
             }
 
@@ -245,7 +245,7 @@ class DeferredDemo : DemoScene("Deferred Shading") {
                 normalMapping { setNormalMap(groundNormals) }
                 roughness { textureProperty(groundRoughness) }
                 metallic { textureProperty(groundMetallic) }
-                ao { textureProperty(groundAo) }
+                ao { materialAo.textureProperty(groundAo) }
             }
         }
     }
@@ -498,7 +498,7 @@ class DeferredDemo : DemoScene("Deferred Shading") {
         private val bloomMapShader = KslUnlitShader {
             pipeline { depthTest = DepthCompareOp.ALWAYS }
             color { textureData() }
-            colorSpaceConversion = ColorSpaceConversion.LinearToSrgb()
+            colorSpaceConversion = ColorSpaceConversion.LINEAR_TO_sRGB
             modelCustomizer = {
                 fragmentStage {
                     main {
@@ -534,7 +534,7 @@ class DeferredDemo : DemoScene("Deferred Shading") {
         companion object {
             val cfg = UnlitShaderConfig {
                 pipeline { depthTest = DepthCompareOp.ALWAYS }
-                colorSpaceConversion = ColorSpaceConversion.AsIs
+                colorSpaceConversion = ColorSpaceConversion.AS_IS
                 modelCustomizer = {
                     val uv = interStageFloat2()
                     vertexStage {

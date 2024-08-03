@@ -20,8 +20,8 @@ class ColorGridContent(val sphereProto: PbrDemo.SphereProto) : PbrDemo.PbrConten
     private val shaders = mutableListOf<KslPbrShader>()
     private var contentMesh: Mesh? = null
 
-    private val roughness = mutableStateOf(0.3f).onChange { _, new -> shaders.forEach { s -> s.roughness = new } }
-    private val metallic = mutableStateOf(0f).onChange { _, new -> shaders.forEach { s -> s.metallic = new } }
+    private val roughness = mutableStateOf(0.3f).onChange { shaders.forEach { s -> s.roughness = it } }
+    private val metallic = mutableStateOf(0f).onChange { shaders.forEach { s -> s.metallic = it } }
 
     override fun UiScope.createContentMenu() {
         val lblSize = UiSizes.baseSize * 2f
@@ -97,7 +97,7 @@ class ColorGridContent(val sphereProto: PbrDemo.SphereProto) : PbrDemo.PbrConten
         roughness { uniformProperty(0.1f) }
         metallic { uniformProperty(0f) }
         if (withIbl) {
-            lightingCfg.imageBasedAmbientLight(envMaps.irradianceMap)
+            imageBasedAmbientColor(envMaps.irradianceMap)
             reflectionMap = envMaps.reflectionMap
         }
     }

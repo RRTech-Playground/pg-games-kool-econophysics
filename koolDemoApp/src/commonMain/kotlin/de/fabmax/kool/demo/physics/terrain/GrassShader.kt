@@ -3,10 +3,7 @@ package de.fabmax.kool.demo.physics.terrain
 import de.fabmax.kool.modules.ksl.KslBlinnPhongShader
 import de.fabmax.kool.modules.ksl.KslLitShader
 import de.fabmax.kool.modules.ksl.KslPbrShader
-import de.fabmax.kool.modules.ksl.blocks.CameraData
-import de.fabmax.kool.modules.ksl.blocks.SceneLightData
-import de.fabmax.kool.modules.ksl.blocks.TexCoordAttributeBlock
-import de.fabmax.kool.modules.ksl.blocks.texCoordAttributeBlock
+import de.fabmax.kool.modules.ksl.blocks.*
 import de.fabmax.kool.modules.ksl.lang.*
 import de.fabmax.kool.pipeline.*
 import de.fabmax.kool.pipeline.shading.AlphaMode
@@ -86,7 +83,7 @@ object GrassShader {
     }
 
     private fun pbrConfig(grassColor: Texture2d, shadowMap: ShadowMap, ssaoMap: Texture2d, isInstanced: Boolean) = KslPbrShader.Config.Builder().apply {
-        lightingCfg.dualImageBasedAmbientLight()
+        dualImageBasedAmbientColor()
         with(TerrainDemo) {
             iblConfig()
         }
@@ -95,7 +92,7 @@ object GrassShader {
     }.build()
 
     private fun blinnPhongConfig(grassColor: Texture2d, shadowMap: ShadowMap, ssaoMap: Texture2d, isInstanced: Boolean) = KslBlinnPhongShader.Config.Builder().apply {
-        lightingCfg.dualImageBasedAmbientLight()
+        dualImageBasedAmbientColor()
         specularStrength(0.15f)
         grassShaderConfig(grassColor, shadowMap, ssaoMap, isInstanced)
     }.build()
@@ -132,12 +129,14 @@ object GrassShader {
     private fun KslLitShader.LitShaderConfig.Builder.grassShaderConfig(grassColor: Texture2d, shadowMap: ShadowMap, ssaoMap: Texture2d, isInstanced: Boolean) {
         pipeline { cullMethod = CullMethod.NO_CULLING }
         color { textureColor(grassColor) }
-        lighting { addShadowMap(shadowMap) }
+        shadow { addShadowMap(shadowMap) }
         enableSsao(ssaoMap)
         vertices {
             this.isInstanced = isInstanced
             isFlipBacksideNormals = false
         }
+
+        colorSpaceConversion = ColorSpaceConversion.LINEAR_TO_sRGB_HDR
         alphaMode = AlphaMode.Opaque
 
         modelCustomizer = {

@@ -87,17 +87,13 @@ class GltfDemo : DemoScene("glTF Models") {
     private val animationSpeed = mutableStateOf(0.5f)
     private val isAutoRotate = mutableStateOf(true)
 
-    private val isDeferredShading: MutableStateValue<Boolean> = mutableStateOf(true).onChange { _, new ->
-        setupPipelines(new, isAo.value)
-    }
-    private val isAo: MutableStateValue<Boolean> = mutableStateOf(true).onChange { _, new ->
-        setupPipelines(isDeferredShading.value, new)
-    }
-    private val isSsr: MutableStateValue<Boolean> = mutableStateOf(true).onChange { _, new ->
-        deferredPipeline.isSsrEnabled = new
+    private val isDeferredShading: MutableStateValue<Boolean> = mutableStateOf(true).onChange { setupPipelines(it, isAo.value) }
+    private val isAo: MutableStateValue<Boolean> = mutableStateOf(true).onChange { setupPipelines(isDeferredShading.value, it) }
+    private val isSsr: MutableStateValue<Boolean> = mutableStateOf(true).onChange {
+        deferredPipeline.isSsrEnabled = it
         setupPipelines(isDeferredShading.value, isAo.value)
     }
-    private val ssrMapSize = mutableStateOf(0.5f).onChange { _, new -> deferredPipeline.reflectionMapSize = new }
+    private val ssrMapSize = mutableStateOf(0.5f).onChange { deferredPipeline.reflectionMapSize = it }
 
     override fun lateInit(ctx: KoolContext) {
         currentModel.isVisible = true
@@ -250,7 +246,7 @@ class GltfDemo : DemoScene("glTF Models") {
             fun KslPbrShader.Config.Builder.materialConfig() {
                 color { textureColor(colorMap) }
                 normalMapping { setNormalMap(normalMap) }
-                ao { textureProperty(aoMap) }
+                ao { materialAo { textureProperty(aoMap) } }
                 roughness { textureProperty(roughnessMap) }
             }
 
@@ -261,11 +257,9 @@ class GltfDemo : DemoScene("glTF Models") {
             } else {
                 KslPbrShader {
                     materialConfig()
-                    lighting {
-                        enableSsao(aoPipelineForward?.aoMap)
-                        addShadowMaps(shadowsForward)
-                        imageBasedAmbientLight(envMaps.irradianceMap)
-                    }
+                    shadow { addShadowMaps(shadowsForward) }
+                    ao { enableSsao(aoPipelineForward?.aoMap) }
+                    imageBasedAmbientColor(envMaps.irradianceMap)
                     reflectionMap = envMaps.reflectionMap
                 }
             }

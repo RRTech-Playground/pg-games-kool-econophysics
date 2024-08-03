@@ -35,6 +35,7 @@ dist
 kotlin-js-store
 *.kjsm
 *.meta.js
+/**/runtimeLibs/
 local.properties
 
 ### Others

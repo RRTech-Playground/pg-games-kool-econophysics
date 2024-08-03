@@ -7,6 +7,7 @@ import de.fabmax.kool.modules.ksl.KslLitShader
 import de.fabmax.kool.modules.ksl.KslPbrShader
 import de.fabmax.kool.modules.ksl.KslShader
 import de.fabmax.kool.modules.ksl.blocks.BlinnPhongMaterialBlock
+import de.fabmax.kool.modules.ksl.blocks.ColorSpaceConversion
 import de.fabmax.kool.modules.ksl.blocks.PbrMaterialBlock
 import de.fabmax.kool.modules.ksl.blocks.TexCoordAttributeBlock
 import de.fabmax.kool.modules.ksl.lang.*
@@ -137,11 +138,10 @@ class Terrain(val demo: TerrainDemo, val heightMap: Heightmap) {
             fun KslLitShader.LitShaderConfig.Builder.terrainConfig() {
                 color { textureColor(colorMap) }
                 normalMapping { setNormalMap(normalMap) }
-                lighting {
-                    addShadowMap(shadowMap)
-                    dualImageBasedAmbientLight()
-                }
+                shadow { addShadowMap(shadowMap) }
+                colorSpaceConversion = ColorSpaceConversion.LINEAR_TO_sRGB_HDR
                 enableSsao(ssaoMap)
+                dualImageBasedAmbientColor()
 
                 if (this is KslPbrShader.Config.Builder) {
                     with (TerrainDemo) {

@@ -5,6 +5,7 @@ import de.fabmax.kool.modules.ksl.KslBlinnPhongShader
 import de.fabmax.kool.modules.ksl.KslLitShader
 import de.fabmax.kool.modules.ksl.KslPbrShader
 import de.fabmax.kool.modules.ksl.KslShader
+import de.fabmax.kool.modules.ksl.blocks.ColorSpaceConversion
 import de.fabmax.kool.modules.ksl.lang.*
 import de.fabmax.kool.pipeline.Texture2d
 import de.fabmax.kool.pipeline.Texture3d
@@ -67,11 +68,10 @@ object TreeShader {
     private fun KslLitShader.LitShaderConfig.Builder.baseConfig(shadowMap: ShadowMap, ssaoMap: Texture2d) {
         vertices { isInstanced = true }
         color { vertexColor() }
-        lighting {
-            addShadowMap(shadowMap)
-            dualImageBasedAmbientLight()
-        }
+        shadow { addShadowMap(shadowMap) }
         enableSsao(ssaoMap)
+        dualImageBasedAmbientColor()
+        colorSpaceConversion = ColorSpaceConversion.LINEAR_TO_sRGB_HDR
         modelCustomizer = { windMod() }
     }
 
