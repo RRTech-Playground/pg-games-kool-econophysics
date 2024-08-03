@@ -1,4 +1,4 @@
-rootProject.name = "pg-games-kool-playground"
+rootProject.name = "pg-games-kool-econophysics"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -30,7 +30,5 @@ dependencyResolutionManagement {
 }
 
 include("composeApp")
-include("koolApp")
-include("koolDemoApp")
 
 include(":modules:core:presentation:ui")
