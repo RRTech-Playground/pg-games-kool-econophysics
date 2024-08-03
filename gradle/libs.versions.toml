@@ -7,7 +7,7 @@ androidx-constraintlayout = "2.1.4"
 androidx-core-ktx = "1.13.1"
 androidx-espresso-core = "3.6.1"
 androidx-material = "1.12.0"
-#gdxLwjgl3GlfwQwtMacos = "1.12.0"
+gdxLwjgl3GlfwQwtMacos = "1.12.1"
 jpCompose = "1.7.0-beta05"  # "1.6.7" "1.7.0-beta03" "1.7.0-beta05"
 jbCompose = "1.7.0-alpha02"  # "1.6.11" "1.7.0-alpha01" "1.7.0-alpha02"
 jbLifecycle = "2.8.0"
@@ -47,7 +47,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidx-espresso-core" }
 android-material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
 
-#gdx-lwjgl3-glfw-awt-macos = { module = "com.badlogicgames.gdx:gdx-lwjgl3-glfw-awt-macos", version.ref = "gdxLwjgl3GlfwQwtMacos"}
+gdx-lwjgl3-glfw-awt-macos = { module = "com.badlogicgames.gdx:gdx-lwjgl3-glfw-awt-macos", version.ref = "gdxLwjgl3GlfwQwtMacos"}
 
 # Jetbrains
 jetbrains-lifecycle-viewmodel-compose = { group = "org.jetbrains.androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "jbLifecycle" }

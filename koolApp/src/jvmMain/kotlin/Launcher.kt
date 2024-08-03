@@ -1,5 +1,7 @@
 import de.fabmax.kool.KoolApplication
 import de.fabmax.kool.KoolConfigJvm
+import org.lwjgl.glfw.GLFW.*
+import org.lwjgl.opengl.GL11.GL_TRUE
 import template.launchApp
 
 /**
@@ -8,8 +10,9 @@ import template.launchApp
  */
 fun main() = KoolApplication(
     config = KoolConfigJvm(
-        windowTitle = "kool Template App"
+        windowTitle = "kool Template App",
+
     )
-) { ctx ->
+) {
     launchApp(ctx)
 }

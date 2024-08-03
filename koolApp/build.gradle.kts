@@ -64,7 +64,7 @@ kotlin {
 
                 // Workaround to get rid of the "GLFW may only be used on the main thread and that thread must be the first thread in the process." java.lang.IllegalStateException on Mac
                 // Also add -XstartOnFirstThread to the VM Options
-                //implementation(libs.gdx.lwjgl3.glfw.awt.macos)
+                implementation(libs.gdx.lwjgl3.glfw.awt.macos)
             }
 
                 // Following code is from the demos
@@ -126,6 +126,7 @@ task("runnableJar", Jar::class) {
 
 task("runApp", JavaExec::class) {
     group = "app"
+
     dependsOn("jvmMainClasses")
 
     classpath = layout.buildDirectory.files("classes/kotlin/jvm/main")
@@ -133,6 +134,8 @@ task("runApp", JavaExec::class) {
         .filter { it.name.startsWith("common") || it.name.startsWith("jvm") }
         .map { it.copyRecursive().fileCollection { true } }
         .forEach { classpath += it }
+
+    jvmArgs("-XstartOnFirstThread")
 
     mainClass.set("LauncherKt")
 }

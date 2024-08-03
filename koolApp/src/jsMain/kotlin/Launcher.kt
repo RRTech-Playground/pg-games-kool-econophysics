@@ -1,3 +1,4 @@
+
 import de.fabmax.kool.KoolApplication
 import de.fabmax.kool.KoolConfigJs
 import template.launchApp
@@ -10,6 +11,6 @@ fun main() = KoolApplication(
     config = KoolConfigJs(
         canvasName = "glCanvas"
     )
-) { ctx ->
+) {
     launchApp(ctx)
 }
