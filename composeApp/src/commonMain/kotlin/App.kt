@@ -12,9 +12,6 @@ import ch.rrte.pg.games.kool.playground.core.presentation.ui.components.example.
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-import pg_games_kool_playground.composeapp.generated.resources.Res
-import pg_games_kool_playground.composeapp.generated.resources.compose_multiplatform
-
 @Composable
 @Preview
 fun App() {
@@ -32,6 +29,6 @@ fun App() {
 //                }
 //            }
 //        }
-        HelloFutureComposable()
+        HelloFutureComposable("Hello Future Econophysics")
     }
 }
