@@ -30,5 +30,4 @@ dependencyResolutionManagement {
 }
 
 include("composeApp")
-
 include(":modules:core:presentation:ui")
